@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ht">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827"><title>MY BUSINESS</title>
+<style>
+:root{--bg:#f3f5f9;--card:#fff;--ink:#172033;--muted:#697386;--line:#e5e9f0;--accent:#635bff;--green:#159947;--red:#d92d20}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:#111827;color:white;padding:22px 18px 20px;border-radius:0 0 24px 24px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:850;font-size:20px;letter-spacing:.7px}.brand small{display:block;font-weight:500;color:#b7c0d0;font-size:12px;letter-spacing:0;margin-top:4px}
+select,input,button{font:inherit}select{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px;color:var(--ink)}
+nav{display:flex;gap:8px;overflow:auto;padding:14px 14px 4px;max-width:900px;margin:auto}nav button{white-space:nowrap;border:0;border-radius:12px;padding:10px 13px;background:#e8ebf2;color:#465064;font-weight:650}nav button.active{background:var(--accent);color:white}
+main{max-width:900px;margin:auto;padding:14px; padding-bottom:42px}.section{display:none}.section.active{display:block}.heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:8px 0 14px}.heading h2{margin:0;font-size:21px}.muted{color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:15px;min-width:0}.metric-label{font-size:12px;color:var(--muted);margin-bottom:9px}.metric{font-size:clamp(19px,5vw,26px);font-weight:800;letter-spacing:-.5px;overflow-wrap:anywhere}.metric.green{color:var(--green)}.metric.red{color:var(--red)}.tag{font-size:11px;background:#eeedff;color:#5148df;border-radius:99px;padding:5px 8px;display:inline-block;margin-bottom:9px}
+.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:16px;margin-top:13px}.panel h3{margin:0 0 14px;font-size:16px}.barrow{margin:13px 0}.barhead{display:flex;justify-content:space-between;gap:8px;font-size:12px;margin-bottom:6px}.track{height:9px;border-radius:99px;background:#eef0f5;overflow:hidden}.fill{height:100%;border-radius:99px;background:var(--accent)}
+.btn{border:0;border-radius:12px;padding:12px 15px;background:var(--accent);color:white;font-weight:750;cursor:pointer}.btn.secondary{background:#eef0ff;color:#5148df}.btn.danger{background:#fff0ef;color:#b42318}.btn.small{padding:8px 10px;font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap}
+label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px}.field{margin-bottom:14px}.field input,.field select{width:100%;padding:12px;border:1px solid #dce1ea;border-radius:11px;background:#fff;color:var(--ink)}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.fields .field{min-width:0}
+.product{display:flex;align-items:flex-start;gap:12px}.product-icon{width:42px;height:42px;border-radius:13px;background:#eeedff;color:#5148df;display:grid;place-items:center;font-size:20px;flex-shrink:0}.product-main{flex:1;min-width:0}.product-main h3{margin:1px 0 5px;font-size:15px;overflow-wrap:anywhere}.product-meta{font-size:12px;color:var(--muted);line-height:1.6}.product-profit{font-weight:800;margin-top:5px}.product-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.empty{text-align:center;padding:28px 12px;color:var(--muted)}.empty b{display:block;color:var(--ink);margin-bottom:7px}
+table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;padding:10px 7px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:650}td:last-child,th:last-child{text-align:right}.tablewrap{overflow-x:auto}
+.range-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;margin:15px 0}.range-row label{font-size:14px;color:var(--ink);margin:0 0 7px}.range-row input[type=range]{width:100%;accent-color:var(--accent)}.range-val{font-weight:800;font-size:13px;text-align:right;min-width:90px}
+.notice{background:#fef7e6;color:#854d0e;padding:12px;border-radius:12px;font-size:12px;line-height:1.5;margin-top:12px}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:10px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand">MY BUSINESS<small>Kontwòl rentabilité e-commerce</small></div><select id="currency" aria-label="Devise"><option value="HTG">HTG — Goud</option><option value="USD">USD — Dola</option></select></div></header>
+<nav>
+<button class="active" data-tab="dashboard">📊 Dashboard</button><button data-tab="products">📦 Pwodwi yo</button><button data-tab="calculator">🧮 Similatè</button><button data-tab="reports">📈 Rapò</button>
+</nav>
+<main>
+<section class="section active" id="dashboard">
+<div class="heading"><div><h2>Dashboard</h2><div class="muted">Men kijan business ou ap mache.</div></div><button class="btn small" id="quickAdd">+ Pwodwi</button></div>
+<div class="grid">
+<div class="card"><div class="metric-label">Chiffre d'affaires</div><div class="metric" id="dashRevenue">0 HTG</div></div>
+<div class="card"><div class="metric-label">Benefis nèt estime</div><div class="metric green" id="dashProfit">0 HTG</div></div>
+<div class="card"><div class="metric-label">Maj nèt</div><div class="metric" id="dashMargin">0%</div></div>
+<div class="card"><div class="metric-label">ROAS jeneral</div><div class="metric" id="dashRoas">—</div></div>
+</div>
+<div class="panel"><h3>📉 Kote lajan an ale</h3><div id="costBars"></div></div>
+<div class="panel"><h3>🏆 Pi bon pwodwi yo</h3><div id="topProducts"></div></div>
+<div class="panel"><h3>Rezime business</h3><div class="grid two">
+<div><div class="metric-label">Kantite pwodwi</div><div class="metric" id="productCount">0</div></div>
+<div><div class="metric-label">Kòmann total</div><div class="metric" id="orderCount">0</div></div>
+</div></div>
+</section>
+<section class="section" id="products">
+<div class="heading"><div><h2>Pwodwi mwen yo</h2><div class="muted">Ajoute plizyè pwodwi epi suiv rezilta yo.</div></div><button class="btn" id="addProduct">+ Ajoute</button></div>
+<div id="productList"></div>
+</section>
+<section class="section" id="calculator">
+<div class="heading"><div><h2>Similatè rentabilité</h2><div class="muted">Deplase curseurs yo pou teste yon senaryo.</div></div></div>
+<div class="panel">
+<div class="range-row"><div><label for="sPrice">Pri vant / inite</label><input id="sPrice" type="range" min="100" max="10000" step="50" value="1500"></div><div class="range-val" id="vPrice">1 500 HTG</div></div>
+<div class="range-row"><div><label for="sCost">Pri acha / inite</label><input id="sCost" type="range" min="0" max="5000" step="50" value="500"></div><div class="range-val" id="vCost">500 HTG</div></div>
+<div class="range-row"><div><label for="sShip">Livrezon / kòmann</label><input id="sShip" type="range" min="0" max="2000" step="25" value="200"></div><div class="range-val" id="vShip">200 HTG</div></div>
+<div class="range-row"><div><label for="sAds">Bidjè piblisite total</label><input id="sAds" type="range" min="0" max="100000" step="500" value="3000"></div><div class="range-val" id="vAds">3 000 HTG</div></div>
+<div class="range-row"><div><label for="sOrders">Kantite kòmann</label><input id="sOrders" type="range" min="0" max="500" step="1" value="30"></div><div class="range-val" id="vOrders">30</div></div>
+<div class="notice">Similatè sa a se pou yon sèl pwodwi nan yon senaryo. Pou swiv plizyè pwodwi an menm tan, ajoute yo nan seksyon “Pwodwi yo”.</div>
+</div>
+<div class="grid" style="margin-top:12px">
+<div class="card"><div class="metric-label">Chiffre d'affaires</div><div class="metric" id="simRevenue">45 000 HTG</div></div>
+<div class="card"><div class="metric-label">Benefis nèt</div><div class="metric green" id="simProfit">21 000 HTG</div></div>
+<div class="card"><div class="metric-label">Maj nèt</div><div class="metric" id="simMargin">46.7%</div></div>
+<div class="card"><div class="metric-label">ROAS aktyèl</div><div class="metric" id="simRoas">15.00x</div></div>
+</div>
+<div class="panel"><h3>Rezilta kalkil la</h3><div id="simBars"></div>
+<div class="barrow"><div class="barhead"><span>ROAS pou rive nan ekilib</span><b id="simBreakRoas">1.25x</b></div><div class="muted" id="simBreakNote"></div></div>
+<div class="barrow"><div class="barhead"><span>Kòmann pou kouvri piblisite a</span><b id="simBreakOrders">4</b></div></div>
+</div>
+</section>
+<section class="section" id="reports">
+<div class="heading"><div><h2>Rapò ak konparezon</h2><div class="muted">Konpare pwodwi yo selon benefis estime.</div></div><button class="btn secondary small" id="exportCsv">Ekspòte CSV</button></div>
+<div class="panel"><h3>Benefis estime pa pwodwi</h3><div id="reportBars"></div></div>
+<div class="panel"><h3>Tablo pwodwi yo</h3><div class="tablewrap"><table><thead><tr><th>Pwodwi</th><th>Kòmann</th><th>CA</th><th>Benefis</th><th>Maj</th></tr></thead><tbody id="reportTable"></tbody></table></div></div>
+</section>
+</main>
+<footer>MY BUSINESS · Done yo rete sou aparèy sa a nan navigatè a. Fè yon ekspòtasyon CSV pou backup.</footer>
+<dialog id="productDialog" style="border:0;border-radius:20px;padding:20px;width:min(94%,520px);box-shadow:0 20px 60px #0003">
+<form id="productForm">
+<div class="heading"><h2 id="formTitle">Ajoute pwodwi</h2><button type="button" class="btn secondary small" id="closeDialog">Fèmen</button></div>
+<input type="hidden" id="editId">
+<div class="field"><label for="pName">Non pwodwi</label><input id="pName" required placeholder="Egzanp: Volumax"></div>
+<div class="fields">
+<div class="field"><label for="pPrice">Pri vant / inite</label><input id="pPrice" type="number" min="0" step="any" required value="1500"></div>
+<div class="field"><label for="pCost">Pri acha / inite</label><input id="pCost" type="number" min="0" step="any" required value="500"></div>
+<div class="field"><label for="pShip">Livrezon / kòmann</label><input id="pShip" type="number" min="0" step="any" required value="200"></div>
+<div class="field"><label for="pAds">Piblisite total</label><input id="pAds" type="number" min="0" step="any" required value="3000"></div>
+<div class="field"><label for="pOrders">Kantite kòmann</label><input id="pOrders" type="number" min="0" step="1" required value="30"></div>
+</div>
+<button class="btn" style="width:100%" type="submit">Konsève pwodwi</button>
+</form></dialog>
+<script>
+const $=id=>document.getElementById(id);
+let products=[];
+try{products=JSON.parse(localStorage.getItem('myBusinessProducts')||'[]')}catch(e){products=[]}
+const money=n=>Math.round(n).toLocaleString('fr-FR')+' '+$('currency').value;
+const fmt=n=>Math.round(n).toLocaleString('fr-FR');
+function calc(p){const revenue=p.price*p.orders,prod=p.cost*p.orders,ship=p.ship*p.orders,profit=revenue-prod-ship-p.ads,margin=revenue?profit/revenue*100:0,roas=p.ads?revenue/p.ads:null,contrib=p.price-p.cost-p.ship,breakRoas=contrib>0?p.price/contrib:null,breakOrders=contrib>0?Math.ceil(p.ads/contrib):null;return{revenue,prod,ship,profit,margin,roas,contrib,breakRoas,breakOrders}}
+function setMetric(id,val,kind){$(id).textContent=val;$(id).classList.remove('green','red');if(kind)$(id).classList.add(kind)}
+function bar(name,value,total,color){let pct=total>0?Math.min(100,Math.abs(value)/total*100):0;return `<div class="barrow"><div class="barhead"><span>${name}</span><b>${money(value)}</b></div><div class="track"><div class="fill" style="width:${pct}%;background:${color}"></div></div></div>`}
+function render(){const totals=products.reduce((a,p)=>{const c=calc(p);a.revenue+=c.revenue;a.profit+=c.profit;a.prod+=c.prod;a.ship+=c.ship;a.ads+=p.ads;a.orders+=p.orders;return a},{revenue:0,profit:0,prod:0,ship:0,ads:0,orders:0});
+setMetric('dashRevenue',money(totals.revenue));setMetric('dashProfit',money(totals.profit),totals.profit>=0?'green':'red');setMetric('dashMargin',(totals.revenue?totals.profit/totals.revenue*100:0).toFixed(1)+'%');$('dashRoas').textContent=totals.ads?(totals.revenue/totals.ads).toFixed(2)+'x':'—';$('productCount').textContent=products.length;$('orderCount').textContent=fmt(totals.orders);
+$('costBars').innerHTML=totals.revenue?bar('Pwodwi',totals.prod,totals.revenue,'#7b83ff')+bar('Livrezon',totals.ship,totals.revenue,'#f59e0b')+bar('Piblisite',totals.ads,totals.revenue,'#a78bfa')+bar(totals.profit>=0?'Benefis nèt':'Pèt nèt',Math.abs(totals.profit),totals.revenue,totals.profit>=0?'#16a34a':'#dc2626'):'<div class="empty">Ajoute yon pwodwi pou wè dashboard la.</div>';
+const sorted=[...products].sort((a,b)=>calc(b).profit-calc(a).profit).slice(0,3);$('topProducts').innerHTML=sorted.length?sorted.map(p=>`<div class="barrow"><div class="barhead"><span>${esc(p.name)}</span><b style="color:${calc(p).profit>=0?'#159947':'#d92d20'}">${money(calc(p).profit)}</b></div><div class="muted">${p.orders} kòmann · Maj ${calc(p).margin.toFixed(1)}%</div></div>`).join(''):'<div class="empty">Pi bon pwodwi yo ap parèt isit la.</div>';
+$('productList').innerHTML=products.length?products.map(p=>{let c=calc(p);return `<div class="panel"><div class="product"><div class="product-icon">📦</div><div class="product-main"><h3>${esc(p.name)}</h3><div class="product-meta">Pri vant: ${money(p.price)} · Acha: ${money(p.cost)}<br>Livrezon: ${money(p.ship)} · Piblisite: ${money(p.ads)}<br>${p.orders} kòmann · CA: ${money(c.revenue)}</div><div class="product-profit" style="color:${c.profit>=0?'#159947':'#d92d20'}">Benefis: ${money(c.profit)} · Maj: ${c.margin.toFixed(1)}%</div><div class="product-actions"><button class="btn secondary small" onclick="editProduct('${p.id}')">Modifye</button><button class="btn danger small" onclick="deleteProduct('${p.id}')">Efase</button></div></div></div></div>`}).join(''):'<div class="panel empty"><b>Pa gen pwodwi pou kounye a</b>Peze “Ajoute” pou antre premye pwodwi ou.</div>';
+$('reportBars').innerHTML=sorted.length?sorted.map(p=>bar(p.name,calc(p).profit,Math.max(1,...products.map(x=>Math.abs(calc(x).profit))),calc(p).profit>=0?'#16a34a':'#dc2626')).join(''):'<div class="empty">Pa gen done pou konpare.</div>';
+$('reportTable').innerHTML=products.length?products.map(p=>{let c=calc(p);return `<tr><td>${esc(p.name)}</td><td>${p.orders}</td><td>${money(c.revenue)}</td><td style="color:${c.profit>=0?'#159947':'#d92d20'}">${money(c.profit)}</td><td>${c.margin.toFixed(1)}%</td></tr>`}).join(''):'<tr><td colspan="5">Ajoute pwodwi pou wè rapò.</td></tr>';
+localStorage.setItem('myBusinessProducts',JSON.stringify(products))}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function openForm(p){$('productForm').reset();$('editId').value=p?.id||'';$('formTitle').textContent=p?'Modifye pwodwi':'Ajoute pwodwi';$('pName').value=p?.name||'';$('pPrice').value=p?.price??1500;$('pCost').value=p?.cost??500;$('pShip').value=p?.ship??200;$('pAds').value=p?.ads??3000;$('pOrders').value=p?.orders??30;$('productDialog').showModal()}
+window.editProduct=id=>{let p=products.find(x=>x.id===id);if(p)openForm(p)};
+window.deleteProduct=id=>{let p=products.find(x=>x.id===id);if(p&&confirm('Efase '+p.name+'?')){products=products.filter(x=>x.id!==id);render()}};
+$('addProduct').onclick=()=>openForm();$('quickAdd').onclick=()=>openForm();$('closeDialog').onclick=()=>$('productDialog').close();
+$('productForm').onsubmit=e=>{e.preventDefault();const p={id:$('editId').value||Date.now().toString(),name:$('pName').value.trim(),price:+$('pPrice').value,cost:+$('pCost').value,ship:+$('pShip').value,ads:+$('pAds').value,orders:+$('pOrders').value};const i=products.findIndex(x=>x.id===p.id);if(i>=0)products[i]=p;else products.push(p);$('productDialog').close();render()};
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===b.dataset.tab))});
+$('currency').onchange=()=>{render();simRender()};
+function simRender(){const price=+$('sPrice').value,cost=+$('sCost').value,ship=+$('sShip').value,ads=+$('sAds').value,orders=+$('sOrders').value;[['vPrice',money(price)],['vCost',money(cost)],['vShip',money(ship)],['vAds',money(ads)],['vOrders',fmt(orders)]].forEach(([id,v])=>$(id).textContent=v);const c=calc({price,cost,ship,ads,orders});setMetric('simRevenue',money(c.revenue));setMetric('simProfit',money(c.profit),c.profit>=0?'green':'red');setMetric('simMargin',c.margin.toFixed(1)+'%');$('simRoas').textContent=c.roas===null?'—':c.roas.toFixed(2)+'x';$('simBreakRoas').textContent=c.breakRoas===null?'Pa posib':c.breakRoas.toFixed(2)+'x';$('simBreakOrders').textContent=c.breakOrders===null?'Pa posib':c.breakOrders;$('simBreakNote').textContent=c.breakRoas===null?'Pri vant lan pa kouvri pri pwodwi ak livrezon.':'Vize yon ROAS omwen '+c.breakRoas.toFixed(2)+'x pou kouvri depans sa yo.';$('simBars').innerHTML=c.revenue?bar('Pri pwodwi total',c.prod,c.revenue,'#7b83ff')+bar('Livrezon total',c.ship,c.revenue,'#f59e0b')+bar('Piblisite',ads,c.revenue,'#a78bfa')+bar(c.profit>=0?'Benefis':'Pèt',Math.abs(c.profit),c.revenue,c.profit>=0?'#16a34a':'#dc2626'):'<div class="empty">Ajoute kòmann pou wè analiz la.</div>'}
+['sPrice','sCost','sShip','sAds','sOrders'].forEach(id=>$(id).addEventListener('input',simRender));
+$('exportCsv').onclick=()=>{const rows=[['Pwodwi','Pri vant','Pri acha','Livrezon','Piblisite','Kòmann','Chiffre affaires','Benefis','Maj'],...products.map(p=>{let c=calc(p);return[p.name,p.price,p.cost,p.ship,p.ads,p.orders,c.revenue,c.profit,c.margin.toFixed(2)+'%']})];const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='my-business-rapo.csv';a.click();URL.revokeObjectURL(a.href)};
+render();simRender();
+</script>
+</body></html>
